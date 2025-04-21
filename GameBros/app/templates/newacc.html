@@ -1,0 +1,10 @@
+<form method="POST" action="{{ url_for('auth.register_user') }}" class="p-6 bg-gray-800 rounded-xl">
+    <input type="hidden" name="role" value="buyer">
+    <label class="block text-white">Username</label>
+    <input name="username" required class="input input-bordered w-full mt-2">
+
+    <label class="block text-white mt-4">Password</label>
+    <input name="password" type="password" required class="input input-bordered w-full mt-2">
+
+    <button type="submit" class="btn mt-4 bg-gradient-to-r from-blue-500 to-purple-700 text-white">Register as Buyer</button>
+</form>

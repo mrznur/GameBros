@@ -1,0 +1,35 @@
+
+<!DOCTYPE html>
+<html lang="en" data-theme="dark">
+<head>
+    <meta charset="UTF-8">
+    <title>Create Developer Account</title>
+    <link href="https://cdn.jsdelivr.net/npm/daisyui@4.12.10/dist/full.min.css" rel="stylesheet" />
+    <script src="https://cdn.tailwindcss.com"></script>
+</head>
+<body class="font-inter">
+
+    <section class="flex justify-center items-center min-h-screen bg-base-200">
+        <form method="POST" class="bg-[rgba(30,29,55,1)] rounded-3xl p-8 w-[350px] lg:w-[500px]">
+            <h2 class="text-2xl font-bold text-center bg-gradient-to-r from-sky-500 via-purple-500 to-pink-500 text-transparent bg-clip-text">Register as Developer</h2>
+
+            <label class="block mt-5 font-bold">Username</label>
+            <input type="text" name="username" required class="input input-bordered w-full bg-white text-black">
+
+            <label class="block mt-4 font-bold">Email</label>
+            <input type="email" name="email" required class="input input-bordered w-full bg-white text-black">
+
+            <label class="block mt-4 font-bold">Portfolio URL</label>
+            <input type="url" name="portfolio" class="input input-bordered w-full bg-white text-black">
+
+            <label class="block mt-4 font-bold">Password</label>
+            <input type="password" name="password" required class="input input-bordered w-full bg-white text-black">
+
+            <div class="mt-6 text-center">
+                <button type="submit" class="btn bg-gradient-to-r from-sky-600 via-purple-700 to-pink-800 text-white w-full">Register</button>
+            </div>
+        </form>
+    </section>
+
+</body>
+</html>
