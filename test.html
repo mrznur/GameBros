@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Popover with Tailwind CSS</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+</head>
+<body class="bg-gray-100 dark:bg-gray-900 dark:text-white p-6">
+    <p class="text-gray-500 dark:text-gray-400">
+        Due to its central geographic location in Southern Europe, 
+        <a href="#" id="popover-trigger" class="text-blue-600 underline dark:text-blue-500 hover:no-underline">
+            Italy
+        </a> 
+        has historically been home to myriad peoples and cultures. In addition to the various ancient peoples dispersed throughout what is now modern-day Italy, the most predominant being the Indo-European Italic peoples who gave the peninsula its name, beginning from the classical era, Phoenicians and Carthaginians founded colonies mostly in insular Italy.
+    </p>
+
+    <!-- Popover Content -->
+    <div id="popover-image" class="absolute z-10 invisible opacity-0 transition-opacity duration-300 bg-white border border-gray-200 rounded-lg shadow-lg w-96 p-4 dark:bg-gray-800 dark:border-gray-600">
+        <div class="relative w-full h-0" style="padding-top: 56.25%;">
+            <iframe src="https://www.youtube.com/embed/mr15Xzb1Ook?autoplay=1&mute=1" 
+                    title="Tailwind in 100 Seconds" 
+                    class="absolute top-0 left-0 w-full h-full rounded-lg" 
+                    frameborder="0" 
+                    allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" 
+                    referrerpolicy="strict-origin-when-cross-origin" 
+                    allowfullscreen></iframe>
+        </div>
+    </div>
+
+    <script>
+        const popoverTrigger = document.getElementById('popover-trigger');
+        const popover = document.getElementById('popover-image');
+
+        // Show popover when mouse enters the trigger link
+        popoverTrigger.addEventListener('mouseover', function() {
+            const rect = popoverTrigger.getBoundingClientRect();
+            popover.style.top = `${rect.bottom + window.scrollY + 10}px`;  // Position below the text link
+            popover.style.left = `${rect.left + window.scrollX}px`; // Align with the left of the text link
+            popover.classList.remove('invisible', 'opacity-0');
+            popover.classList.add('visible', 'opacity-100');
+        });
+
+        // Hide popover when mouse leaves the trigger link
+        popoverTrigger.addEventListener('mouseleave', function() {
+            popover.classList.remove('opacity-100');
+            popover.classList.add('invisible', 'opacity-0');
+        });
+    </script>
+</body>
+</html>
