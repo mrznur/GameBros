@@ -1,0 +1,328 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="dark">
+
+<head>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Inter:ital,opsz,wght@0,14..32,100..900;1,14..32,100..900&family=Manrope:wght@200..800&family=Work+Sans:ital,wght@0,100..900;1,100..900&display=swap"
+        rel="stylesheet">
+    <link href="https://cdn.jsdelivr.net/npm/daisyui@4.12.10/dist/full.min.css" rel="stylesheet" type="text/css" />
+    <script src="https://kit.fontawesome.com/8584240c12.js" crossorigin="anonymous"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+    <script src="https://cdn.tailwindcss.com"></script>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Upload Game Data</title>
+    <link rel="shortcut icon" href="{{ url_for('static', filename='img/icon.jpg') }}">
+    <style>
+        html,
+        body,
+        p,
+        h1,
+        h2,
+        h3,
+        h4,
+        h5,
+        h6 {
+            font-family: 'Work Sans', 'Inter', 'Manrope', sans-serif !important;
+        }
+    </style>
+    <style>
+        footer {
+            position: relative;
+            /* Ensures it doesn't overlap content */
+            z-index: 1;
+        }
+    </style>
+</head>
+
+<body>
+    <header>
+        <div class="navbar bg-base-100 justify-start bg-gradient-to-b from-[#000815] to-transparent">
+            <div class="ml-5 lg:ml-20 mt-5 px-0.5 py-0.5 w-[120px] lg:w-[90px] relative">
+                <div
+                    class="absolute inset-0 bg-gradient-to-r from-orange-700 via-purple-400 to-blue-700 rounded-xl p-[2px]">
+                </div>
+                <a href="/">
+                    <img alt="Tailwind CSS Navbar component" src="{{ url_for('static', filename='img/logo.jpg') }}"
+                        alt="Logo" class="rounded-lg relative z-10 w-[100%] h-[80%]">
+                </a>
+            </div>
+        </div>
+    </header>
+
+
+    <section class="flex mt-5 flex-col md:flex-row">
+        <div class="bg-gradient-to-r from-blue-800 to-blue-900 pr-20 md:w-1/2">
+            <div class="ml-7 lg:ml-20 text-white">
+                <h1 class="text-bold text-2xl mt-3">Upload Game Data</h1>
+                <form id="developerForm" class="mt-10">
+                    <p class="text-l text-bold">Game Name</p>
+                    <input type="text" id="game_name" name="game_name"
+                        class="pl-5 block rounded-lg w-full lg:w-[500px] h-[35px] lg:h-[40px] mt-3 bg-white text-black"
+                        value="{{ game_name }}" readonly>
+
+                    <p class="text-l text-bold mt-5">Enter Developer Username</p>
+                    <input type="text" id="dev_username" name="dev_username"
+                        class="pl-5 block rounded-lg w-full lg:w-[500px] h-[35px] lg:h-[40px] mt-3 bg-white text-black"
+                        placeholder="Enter Developer Name" value="{{ dev_username }}" readonly>
+                    <p class="text-l text-bold mt-5">Enter Game Genre</p>
+                    <input type="text" id="game_genre" name="game_genre"
+                        class="pl-5 block rounded-lg w-full lg:w-[500px] h-[35px] lg:h-[40px] mt-3 bg-white text-black"
+                        placeholder="Enter game desciption" required>
+                    <p class="text-l text-bold mt-5">Enter Game Description (keep it concise)</p>
+                    <input type="text" id="game_description" name="game_description"
+                        class="pl-5 block rounded-lg w-full lg:w-[500px] h-[35px] lg:h-[40px] mt-3 bg-white text-black"
+                        placeholder="Enter game desciption" required>
+                    <p class="text-l text-bold mt-5">Enter Release Year</p>
+                    <input type="number" id="release_year" name="release_year"
+                        class="pl-5 block rounded-lg w-full lg:w-[500px] h-[35px] lg:h-[40px] mt-3 bg-white text-black"
+                        placeholder="Enter price in dollars (price can range from 0 to 120 dollars)" min="0" max="120"
+                        required>
+
+                    <p class="text-l text-bold mt-5">Enter Base Price(minimum price: 0, maximum price=120$)</p>
+                    <input type="number" id="base_price" name="base_price"
+                        class="pl-5 block rounded-lg w-full lg:w-[500px] h-[35px] lg:h-[40px] mt-3 bg-white text-black"
+                        placeholder="Enter price in dollars (price can range from 0 to 120 dollars)" min="0" max="120"
+                        required>
+                    <p class="text-l text-bold mt-5">Enter part of youtube trailer</p>
+                    <input type="text" id="yt_embed" name="yt_embed"
+                        class="pl-5 block rounded-lg w-full lg:w-[500px] h-[35px] lg:h-[40px] mt-3 bg-white text-black"
+                        placeholder="Enter link portion after = sign (e.g., mr15Xzb1Ook)" required>
+
+
+
+                    <p class="text-l text-bold mt-5">Enter Logo (please make sure it doesn't exceed 500x500)</p>
+
+                    <!-- Logo Upload -->
+                    <div class="w-full mt-3">
+                        <label for="img_logo" class="block text-sm text-gray-700 dark:text-gray-400">
+                            <span class="font-semibold">Choose Logo</span>
+                        </label>
+                        <input id="img_logo" type="file" class="mt-2 p-2 border border-gray-300 rounded-md w-full"
+                            accept="image/png, image/jpeg" required />
+                    </div>
+
+                    <p class="text-l text-bold mt-5">Enter first relevant ingame screenshot (max 1080p)</p>
+
+                    <!-- First Screenshot Upload -->
+                    <div class="w-full mt-3">
+                        <label for="img_ss1" class="block text-sm text-gray-700 dark:text-gray-400">
+                            <span class="font-semibold">Choose Screenshot 1</span>
+                        </label>
+                        <input id="img_ss1" type="file" class="mt-2 p-2 border border-gray-300 rounded-md w-full"
+                            accept="image/png, image/jpeg" required />
+                    </div>
+
+                    <p class="text-l text-bold mt-5">Enter second relevant ingame screenshot (max 1080p)</p>
+
+                    <!-- Second Screenshot Upload -->
+                    <div class="w-full mt-3">
+                        <label for="img_ss2" class="block text-sm text-gray-700 dark:text-gray-400">
+                            <span class="font-semibold">Choose Screenshot 2</span>
+                        </label>
+                        <input id="img_ss2" type="file" class="mt-2 p-2 border border-gray-300 rounded-md w-full"
+                            accept="image/png, image/jpeg" required />
+                    </div>
+                    <p class="text-l text-bold mt-5">Enter game file (compress and upload)</p>
+                    <div class="w-full mt-3">
+                        <label for="img_ss2" class="block text-sm text-gray-700 dark:text-gray-400">
+                            <span class="font-semibold">Choose game file</span>
+                        </label>
+                        <input id="game_file" type="file" class="mt-2 p-2 border border-gray-300 rounded-md w-full"
+                            accept="file/rar, file/zip" required />
+                    </div>
+
+
+
+
+
+
+                    <div id="error-message" class="text-red-500 text-center mt-3 hidden">Please fill in all fields.
+                    </div>
+
+                    <div class="mt-6 text-center mb-10">
+                        <button type="button"
+                            class="px-5 h-[40px] lg:w-[300px] lg:h-[50px] bg-gradient-to-r from-blue-500 to-purple-600 text-white rounded-lg text-bold"
+                            onclick="uploadGameData(event)">
+                            Upload Data
+                        </button>
+                    </div>
+                </form>
+
+            </div>
+        </div>
+        <div
+            class="justify-items-center relative bg-[url('{{ url_for('static', filename='img/bg-2.jpg') }}')] bg-cover bg-center w-full h-auto flex flex-col gap-5">
+            <div class="absolute inset-0 bg-blue-800 opacity-20 z-0"></div>
+        </div>
+
+
+
+
+    </section>
+    <footer
+        class="flex flex-col lg:flex-row sm:justify-between lg:justify-center items-center  text-neutral-content p-6 lg:p-10 gap-6 lg:gap-[50rem] bg-gradient-to-t from-[#000815] to-transparent">
+        <!-- Logo and Description -->
+        <aside class="flex flex-col items-center text-center lg:text-left lg:items-start">
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 300 150" width="300" height="150">
+                <defs>
+                    <!-- Gradient for G -->
+                    <linearGradient id="gradient-g" x1="0%" y1="0%" x2="100%" y2="100%">
+                        <stop offset="0%" stop-color="orange" />
+                        <stop offset="100%" stop-color="purple" />
+                    </linearGradient>
+
+                    <!-- Glow Filter -->
+                    <filter id="glow" x="-50%" y="-50%" width="200%" height="200%">
+                        <feGaussianBlur stdDeviation="4" result="blur" />
+                        <feMerge>
+                            <feMergeNode in="blur" />
+                            <feMergeNode in="blur" />
+                            <feMergeNode in="SourceGraphic" />
+                        </feMerge>
+                    </filter>
+                </defs>
+
+                <!-- G and B side-by-side with italic slant -->
+                <text x="20" y="100" font-size="80" font-family="Arial Black, sans-serif" fill="url(#gradient-g)"
+                    filter="url(#glow)" transform="skewX(-15)">
+                    G
+                </text>
+
+                <text x="80" y="140" font-size="80" font-family="Arial Black, sans-serif" fill="#00bfff"
+                    filter="url(#glow)" transform="skewX(-15)">
+                    B
+                </text>
+            </svg>
+
+
+
+            <p class="text-sm lg:text-base">
+            <h1 class="font-bold text-lg lg:text-xl">
+                <i class="fa-regular fa-copyright"></i> GameBros
+            </h1>
+            Find everything you love, in one place.
+            </p>
+        </aside>
+
+        <!-- Social Links -->
+        <nav class="text-center lg:text-left">
+            <h6 class="footer-title text-sm lg:text-base font-bold mb-4">Find Us on Socials</h6>
+            <div class="flex justify-center lg:justify-start gap-4">
+                <a href="">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"
+                        class="fill-current">
+                        <path
+                            d="M19.615 3.184c-3.604-.246-11.631-.245-15.23 0-3.897.266-4.356 2.62-4.385 8.816.029 6.185.484 8.549 4.385 8.816 3.6.245 11.626.246 15.23 0 3.897-.266 4.356-2.62 4.385-8.816-.029-6.185-.484-8.549-4.385-8.816zm-10.615 12.816v-8l8 3.993-8 4.007z">
+                        </path>
+                    </svg>
+                </a>
+                <a href="">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"
+                        class="fill-current">
+                        <path
+                            d="M9 8h-3v4h3v12h5v-12h3.642l.358-4h-4v-1.667c0-.955.192-1.333 1.115-1.333h2.885v-5h-3.808c-3.596 0-5.192 1.583-5.192 4.615v3.385z">
+                        </path>
+                    </svg>
+                </a>
+                <a href="">
+                    <i class="fa-brands fa-instagram text-xl"></i>
+                </a>
+                <a href="">
+                    <i class="fa-brands fa-x-twitter text-xl"></i>
+                </a>
+                <a href="">
+                    <i class="fa-brands fa-tiktok text-xl"></i>
+                </a>
+                <a href="">
+                    <i class="fa-brands fa-discord text-xl"></i>
+                </a>
+            </div>
+        </nav>
+    </footer>
+    <script>
+        async function uploadGameData(event) {
+            // Prevent default form submission if inside a form tag
+            event.preventDefault();
+
+            const game_name = document.getElementById('game_name').value;
+            const dev_username = document.getElementById('dev_username').value;
+            const game_genre = document.getElementById('game_genre').value;
+            const game_description = document.getElementById('game_description').value;
+            const release_year = document.getElementById('release_year').value;
+            const base_price = document.getElementById('base_price').value;
+            const logoFile = document.getElementById('img_logo').files[0];
+            const screenshot1 = document.getElementById('img_ss1').files[0];
+            const screenshot2 = document.getElementById('img_ss2').files[0];
+            const game_file = document.getElementById('game_file').files[0];
+            const yt_embed = document.getElementById('yt_embed').value;
+
+
+            // Log files to debug
+            console.log("Logo file:", logoFile);
+            console.log("Screenshot 1 file:", screenshot1);
+            console.log("Screenshot 2 file:", screenshot2);
+
+            // Convert files to base64 if they are not null
+            const base64Logo = logoFile ? await fileToBase64(logoFile) : null;
+            const base64Screenshot1 = screenshot1 ? await fileToBase64(screenshot1) : null;
+            const base64Screenshot2 = screenshot2 ? await fileToBase64(screenshot2) : null;
+            const base64GameFiles = game_file ? await fileToBase64(game_file) : null;
+
+            // Create form data object
+            const formData = {
+                game_name: game_name,
+                dev_username: dev_username,
+                game_genre: game_genre,
+                game_description: game_description,
+                release_year: release_year,
+                base_price: base_price,
+                logo: base64Logo,
+                screenshot1: base64Screenshot1,
+                screenshot2: base64Screenshot2,
+                game_file: base64GameFiles,
+                yt_embed: yt_embed
+            };
+
+            try {
+                const response = await fetch("/uploadgamedata", {
+                    method: "POST",
+                    headers: {
+                        "Content-Type": "application/json",
+                    },
+                    body: JSON.stringify(formData),
+                });
+
+                const result = await response.json();
+
+                // Show response as an alert and redirect if successful
+                if (response.ok) {
+                    alert(result.message);  // Success message
+                    window.location.href = "/";  // Redirect to index or home page
+                } else {
+                    alert(result.error);  // Show error message
+                }
+            } catch (error) {
+                console.error("Error:", error);
+                alert("An unexpected error occurred. Please try again.");
+            }
+        }
+
+        function fileToBase64(file) {
+            return new Promise((resolve, reject) => {
+                const reader = new FileReader();
+                reader.onload = () => resolve(reader.result.split(',')[1]); // Extract Base64
+                reader.onerror = (error) => {
+                    console.error("File reading error:", error);
+                    reject(error);
+                };
+                reader.readAsDataURL(file);
+            });
+        }
+    </script>
+
+</body>
+
+</html>
