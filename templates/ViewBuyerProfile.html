@@ -2,33 +2,35 @@
 <html lang="en" data-theme="dark">
 
 <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title> {{friendusername}}'s Profile</title>
-    <link rel="shortcut icon" href="{{ url_for('static', filename='img/icon.jpg') }}">
-
-    <link href="https://cdn.jsdelivr.net/npm/daisyui@4.12.10/dist/full.min.css" rel="stylesheet" type="text/css" />
-    <script>
-        tailwind.config = {
-            theme: {
-                extend: {
-                    fontFamily: {
-                        inter: ['Inter', 'sans-serif']
-                    }
-                }
-            }
-        }
-    </script>
-    <script src="https://kit.fontawesome.com/8584240c12.js" crossorigin="anonymous"></script>
-    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link
-        href="https://fonts.googleapis.com/css2?family=Inter:ital,opsz,wght@0,14..32,100..900;1,14..32,100..900&family=Manrope:wght@200..800&display=swap"
-        rel="stylesheet" />
-    <link href="https://fonts.googleapis.com/css2?family=Istok+Web:wght@400;700&display=swap" rel="stylesheet">
-
+        href="https://fonts.googleapis.com/css2?family=Inter:ital,opsz,wght@0,14..32,100..900;1,14..32,100..900&family=Manrope:wght@200..800&family=Work+Sans:ital,wght@0,100..900;1,100..900&display=swap"
+        rel="stylesheet">
+    <link href="https://cdn.jsdelivr.net/npm/daisyui@4.12.10/dist/full.min.css" rel="stylesheet" type="text/css" />
+    <script src="https://kit.fontawesome.com/8584240c12.js" crossorigin="anonymous"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+    <script src="https://cdn.tailwindcss.com"></script>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>{{friendusername}}'s Profile</title>
+    <link rel="shortcut icon" href="{{ url_for('static', filename='img/icon.jpg') }}">
+    <style>
+        html,
+        body,
+        p,
+        h1,
+        h2,
+        h3,
+        h4,
+        h5,
+        h6 {
+            font-family: 'Work Sans', 'Inter', 'Manrope', sans-serif !important;
+        }
+    </style>
 </head>
 
-<body class="font-inter">
+<body>
     <header id="navbar"
         class="flex flex-col lg:flex-row items-start lg:items-center justify-between gap-2 p-2 bg-gradient-to-b from-[#000815] to-transparent">
         <div id="navbar1" class="flex navbar justify-start">
@@ -580,37 +582,37 @@
 
         });
 
-/*
-        function updateNavbarColor() {
-            const navbar = document.getElementById('navbar');
-            const navbar1 = document.getElementById('navbar1');
-            const footer = document.getElementById('footer');
-            const currentHour = new Date().getHours();  // Get current hour (0-23)
-
-            // Apply different background color based on the time
-            if (currentHour >= 6 && currentHour < 18) {
-                // Daytime (6 AM to 6 PM)
-                navbar.classList.remove('bg-[#010321]');
-                navbar.classList.add('bg-base-100');
-                navbar1.classList.remove('bg-[#010321]');
-                navbar1.classList.add('bg-base-100');
-                footer.classList.remove('bg-[#010321]');
-                footer.classList.add('bg-neutral');
-            } else {
-                // Nighttime (6 PM to 6 AM)
-                navbar.classList.remove('bg-base-100');
-                navbar.classList.add('bg-[#010321]');
-                navbar1.classList.remove('bg-base-100');
-                navbar1.classList.add('bg-[#010321]');
-                footer.classList.remove('bg-neutral');
-                footer.classList.add('bg-[#010321]');
-            }
-        }
-
-        // Call the function to update navbar color when the page loads
-        updateNavbarColor();
-
-*/
+        /*
+                function updateNavbarColor() {
+                    const navbar = document.getElementById('navbar');
+                    const navbar1 = document.getElementById('navbar1');
+                    const footer = document.getElementById('footer');
+                    const currentHour = new Date().getHours();  // Get current hour (0-23)
+        
+                    // Apply different background color based on the time
+                    if (currentHour >= 6 && currentHour < 18) {
+                        // Daytime (6 AM to 6 PM)
+                        navbar.classList.remove('bg-[#010321]');
+                        navbar.classList.add('bg-base-100');
+                        navbar1.classList.remove('bg-[#010321]');
+                        navbar1.classList.add('bg-base-100');
+                        footer.classList.remove('bg-[#010321]');
+                        footer.classList.add('bg-neutral');
+                    } else {
+                        // Nighttime (6 PM to 6 AM)
+                        navbar.classList.remove('bg-base-100');
+                        navbar.classList.add('bg-[#010321]');
+                        navbar1.classList.remove('bg-base-100');
+                        navbar1.classList.add('bg-[#010321]');
+                        footer.classList.remove('bg-neutral');
+                        footer.classList.add('bg-[#010321]');
+                    }
+                }
+        
+                // Call the function to update navbar color when the page loads
+                updateNavbarColor();
+        
+        */
         function logout() {
             window.location.href = '/logout'; // Redirect to logout route
         }
